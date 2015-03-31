@@ -1,0 +1,25 @@
+option java_package = "com.frosty.coprocessors.generated";
+option java_outer_classname = "EventsRowkeyProtos";
+option java_generic_services = true;
+option java_generate_equals_and_hash = true;
+option optimize_for = SPEED;
+
+message RowkeyRequest {
+   optional int64 minTimestamp=1;
+   optional int64 maxTimestamp=2;
+}
+
+message RowkeyResponse {
+    repeated bytes rowkeys=1;
+}
+
+service EventsRowkeyService {
+
+  rpc getRowkeys(RowkeyRequest)
+    returns (RowkeyResponse);
+
+  rpc getRowkeyKeyValue(RowkeyRequest)
+    returns (RowkeyResponse);
+
+
+}
