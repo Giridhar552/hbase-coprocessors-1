@@ -21,9 +21,9 @@ import java.util.Map;
  * Date: 3/30/15
  * Time: 10:56 PM
  */
-public class ImpalaSyncFromHBaseClient {
+public class HBaseTestClient {
 
-    private static final Logger logger = LoggerFactory.getLogger(ImpalaSyncFromHBaseClient.class);
+    private static final Logger logger = LoggerFactory.getLogger(HBaseTestClient.class);
 
     public static void main(String[] args) {
         Configuration conf = HBaseConfiguration.create();
@@ -42,7 +42,7 @@ public class ImpalaSyncFromHBaseClient {
         try {
             table = new HTable(conf, "event_idx");
         } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+          logger.error(e.getMessage(),e);
         }
 
         final EventsRowkeyProtos.RowkeyRequest request = EventsRowkeyProtos.RowkeyRequest.getDefaultInstance();
@@ -92,11 +92,6 @@ public class ImpalaSyncFromHBaseClient {
                 System.out.println(s.toStringUtf8());
 
 
-//            for(ByteString s: l)
-//            System.out.println(new String(s));
-            //assertEquals(1,results.size());
-            //  Iterator<String> iter = results.values().iterator();
-            //String val = iter.next();
         }
 
 
