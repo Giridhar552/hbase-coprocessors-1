@@ -60,7 +60,7 @@ public class EventsRowkeysEndpoint extends EventsRowkeyService implements Coproc
         try {
 
             scan.addColumn(Bytes.toBytes("rowkey"), Bytes.toBytes("data"));
-
+            scan.setMaxVersions(1);
             scan.setTimeRange(minTimestamp, maxTimestamp);
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
