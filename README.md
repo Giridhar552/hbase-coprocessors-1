@@ -2,7 +2,7 @@
 
 `$cd src/protobuf`
 
-`$ protoc --version`
+`$protoc --version`
 
 libprotoc 2.5.0
 
